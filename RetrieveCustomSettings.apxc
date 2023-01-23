@@ -1,0 +1,21 @@
+/* To fetch the custom fields associated with a list setting, use getAll() method. It returns a map of data set names and custom setting records */
+Map<String_data_set_name, CustomSettingApiName> var =
+CustomSettingApiName.getAll();
+Eg: Map<String, Student__c> students = Student__c.getAll();
+
+
+/* To fetch all the field values associated with the specified dataset, use getValues() method. This method can be used for both list and hierarchy settings. */
+CustomSettingApiName var = CustomSettingApiName.getValues(dataset_name);
+Eg: Student__c stud = Student__c.getValues('John');
+
+
+/* ---  Accessing Hierarchy Custom Setting data --- */
+
+/* To return a custom setting data set record for the current logged in user. Use the getInstance() method. */
+CustomSettingApiName var = CustomSettingApiName.getInstance();
+
+/* To return a custom setting data set record for a specific userId/ProfileId, Use the getInstance(userId/ProfileId) method. */
+CustomSettingApiName var = CustomSettingApiName.getInstance(userId/ProfileId);.
+
+/* To return the custom setting record data set for the organization, Use the getOrgDefaults() method */
+CustomSettingApiName var = CustomSettingApiName.getOrgDefaults();
