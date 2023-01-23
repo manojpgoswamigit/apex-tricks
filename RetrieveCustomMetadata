@@ -1,0 +1,14 @@
+/***  using query  ***/
+List<MyCustomMetadata__mdt> myCM = [Select MasterLabel, 
+                                           MyField__c 
+                                           from MyCustomMetadata__mdt];
+                                           
+System.debug(myCM);
+
+
+
+/***  using static method call  ***/
+
+List<MyCustomMetadata__mdt> myCM = MyCustomMetadata__mdt.getall().values();
+
+System.debug(myCM);
