@@ -1,0 +1,28 @@
+@isTest
+public class WeatherReportControllerTest {
+
+@isTest static void initViewLoadTest() {
+        // Set the Mock Class for the Callout class
+        Test.setMock(HttpCalloutMock.class, new WeatherReportHTTPRequestMock(false));
+        Test.startTest();
+        WeatherReportController cntl = new WeatherReportController();
+        Test.stopTest();
+        // Check that mock data can be retrieved
+        System.assertEquals(cntl.weatherData.city, ‘Austin’);
+        System.assertEquals(cntl.weatherData.weather, ‘Clear’);
+        System.assertEquals(cntl.weatherData.description, ‘clear sky’);
+        System.assertEquals(cntl.weatherData.currentTemperature, 280);        
+        System.assertEquals(cntl.weatherData.maxTemperature, 291);
+        System.assertEquals(cntl.weatherData.minTemperature, 270);
+    }
+ 
+    @isTest static void initViewLoadErrorTest() {
+        // Set the Mock Class for the Callout class
+        Test.setMock(HttpCalloutMock.class, new WeatherReportHTTPRequestMock(true));
+        Test.startTest();
+        WeatherReportController cntl = new WeatherReportController();
+        Test.stopTest();
+        // Confirm the weather forecast data cannot be retrieved due to communication error
+        System.assertEquals(cntl.weatherData, null);
+    }
+}
